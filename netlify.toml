@@ -1,8 +1,6 @@
 [build]
-  command = "npm install --legacy-peer-deps && npm run build"
-  publish = "dist/admin"  
-  node_version = "16.16.0"  
-
+  command = "ng build --configuration=production"
+  publish = "dist/two-screen-webpages"
 
 
 
