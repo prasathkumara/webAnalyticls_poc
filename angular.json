@@ -87,14 +87,14 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing",
-              "src/_redirects"
+              "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/_redirects"
             ],
             "styles": [
               "src/styles.scss"
