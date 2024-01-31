@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: Screen1Component },
   { path: 'screen2', component: Screen2Component },
   { path: 'screen3', component: Screen3Component },
-  { path: '', redirectTo: '/', pathMatch: 'full' }, // Default route
+ 
 ];
 
 @NgModule({
