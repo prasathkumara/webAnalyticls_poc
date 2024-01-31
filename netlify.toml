@@ -1,6 +1,7 @@
 [build]
-  command = "ng build --prod"
+  command = "ng build --configuration=production"
   publish = "dist/two-screen-webpages"
+
 
 
 [[redirects]]
