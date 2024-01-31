@@ -103,7 +103,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "/src/assets/analytics.js"
+              "src/assets/analytics.js"
             ]
           }
         }
