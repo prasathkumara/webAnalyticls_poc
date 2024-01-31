@@ -27,8 +27,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "_redirects"
+              "src/assets"
+             
             ],
             "styles": [
               "src/styles.scss"
@@ -93,8 +93,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "_redirects"
+              "src/assets"
+            
             ],
             "styles": [
               "src/styles.scss"
