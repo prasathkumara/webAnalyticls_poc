@@ -49,6 +49,9 @@ function storage(value) {
   sessionStorage.setItem("usernames", JSON.stringify(value));
 }
 
+const titleElements = document.querySelectorAll('title');
+const clientName = titleElements[0].innerHTML;
+
 //to get ip adress
 fetch("https://api.ipify.org?format=json")
   .then((response) => response.json())
@@ -64,6 +67,7 @@ fetch("https://api.ipify.org?format=json")
           browserName: browserName,
           dates: date,
           time: time,
+          clientName : clientName
         },
       ],
       userEvents: [],
