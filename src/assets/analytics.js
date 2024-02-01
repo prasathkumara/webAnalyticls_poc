@@ -36,7 +36,7 @@ let getDate = new Date();
 let year = getDate.getFullYear();
 let month = (getDate.getMonth() + 1).toString().padStart(2, "0");
 let day = getDate.getDate();
-let date = year + "-" + month + "-" + day.toLocaleString();
+let date = year + "" + month + "" + day.toLocaleString();
 let hh = getDate.getHours();
 let mm = getDate.getMinutes();
 let ss = getDate.getSeconds();
@@ -44,8 +44,6 @@ let time =
   hh.toLocaleString() + ":" + mm.toLocaleString() + ":" + ss.toLocaleString();
 let obj = {};
 
-const titleElements = document.querySelectorAll('title');
-const clientName = titleElements[0].innerHTML
 //function to store in Session storage
 function storage(value) {
   sessionStorage.setItem("usernames", JSON.stringify(value));
@@ -66,7 +64,6 @@ fetch("https://api.ipify.org?format=json")
           browserName: browserName,
           dates: date,
           time: time,
-          clientName : clientName
         },
       ],
       userEvents: [],
@@ -99,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
 function changedPagename(flag) {
   if (flag) {
     pageName = newPageName;
-    console.log("Page got changed")
   }
   return pageName;
 }
@@ -165,8 +161,7 @@ let isPageChanged = false;
     let newObject = JSON.parse(JSON.stringify(obj));
 function delay() {
   // Find today's date
-  let today = date //new Date().toISOString().slice(0, 10); // Get today's date in YYYY-MM-DD format
-  console.log("Todat  date"+ today)
+  let today = new Date().toISOString().slice(0, 10); // Get today's date in YYYY-MM-DD format
     let oldObjects;
 let newDerivedObject;
   if (oldObject.message == "User not found") {
