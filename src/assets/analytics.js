@@ -2,11 +2,12 @@ const getDate = new Date();
 const year = getDate.getFullYear();
 const month = (getDate.getMonth() + 1).toString().padStart(2, "0");
 const day = getDate.getDate();
-const date = `${year}-${month}-${day.toLocaleString()}`;
+const date = formatDate(getDate);
 const hh = getDate.getHours();
 const mm = getDate.getMinutes();
 const ss = getDate.getSeconds();
 const times = `${hh.toLocaleString()}:${mm.toLocaleString()}:${ss.toLocaleString()}`;
+
 const browserNameMapping = {
   Firefox: "Mozilla Firefox",
   "Edg/": "Microsoft Edge",
@@ -27,7 +28,12 @@ const htmlTemplate = `
     <img src="../../assets/img/cookie.png" alt="" style="max-width: 90px;">
     <div class="content" style="margin-top: 10px;">
       <header style="font-size: 25px; font-weight: 600;">Cookies</header>
-      <p style="color: #858585; margin-bottom: 20px;">We use cookies to provide a better user experience. Accept our cookies to continue.</p>
+      <h1 style="font-size: 25px; font-weight: 600;">GDPR Compliance Notice</h1>
+      <h5>What data do we collect?</h5>
+      <ul style="list-style-type: disc; text-align: left;">
+      <li>We collect personal information such as your name, email address, and location when you sign up for our service or interact with our platform.</li>
+      <li>We also gather data on your usage patterns, preferences, and interactions with our website/application/service to improve your experience and tailor our offerings to your needs.</li>
+    </ul>
       <div class="buttons" style="display: flex; justify-content: center; align-items: center;">
         <button class="item cancel" onclick="onBlock()" style="padding: 10px 20px; margin: 0 5px; border: none; outline: none; font-size: 16px; font-weight: 500; border-radius: 5px; cursor: pointer; background: #eee; color: #333;">Cancel</button>
         <button class="item accept" onclick="onAccept()" style="padding: 10px 20px; margin: 0 5px; border: none; outline: none; font-size: 16px; font-weight: 500; border-radius: 5px; cursor: pointer; background: #493179; color: #fff;">Accept</button>
@@ -48,6 +54,15 @@ let isResponseToDB = false;
 let ipAddress;
 let ls = {};
 let clickCounts = {};
+
+
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); 
+  const day = String(date.getDate()).padStart(2, '0');
+ 
+  return `${year}-${month}-${day}`;
+}
 
 const generateString = (length) => {
   let result = "";
@@ -302,17 +317,16 @@ async function sendDeviceInfo(deviceTypeInfo) {
 }
 
 function detectDeviceType() {
-  const userAgent = navigator.userAgent;
+  const userAgent = navigator.userAgent.toLowerCase();
  
-  if (/tablet|ipad|playbook|silk|(android(?!.*mobile))/i.test(userAgent)) {
+  if (/ipad|tablet|playbook|silk/i.test(userAgent)) {
       return 'tablet';
-  } else if (/mobile|iphone|ipod|blackberry|opera mini|iemobile|windows phone|trident|opera mobi|mobilesafari|htc|nokia|sony|symbian|samsung|lg|htc|mot|mot\-/i.test(userAgent)) {
+  } else if (/mobile|iphone|ipod|blackberry|opera mini|iemobile|windows phone|trident|opera mobi|mobilesafari|htc|nokia|symbian|samsung|lg|mot/i.test(userAgent)) {
       return 'mobile';
   } else {
       return 'pc';
   }
 }
-
 const deviceType = getCookie("deviceType");
 console.log("Device Type:", deviceType);
 
